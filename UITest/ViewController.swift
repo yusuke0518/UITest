@@ -39,6 +39,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         // Labelを作成.
         let label: UILabel = UILabel(frame: CGRect(x: posX, y: posY, width: bWidth, height: bHeight))
+        myTextField = UITextField(frame: CGRect(x: posX, y: posY, width: tWidth, height: tHeight))
     
         // Buttonを生成する.
 //        myButton = UIButton()
@@ -93,7 +94,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func changeTextField(){
-        myTextField = UITextField(frame: CGRect(x: posX, y: posY, width: tWidth, height: tHeight))
         myTextField.text = "Hello TextField"
         myTextField.delegate = self
         myTextField.borderStyle = .roundedRect
@@ -101,19 +101,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func makeButton(){
-        //        myInfoDarkButton = UIButton(type: .infoDark)
-        //        myInfoLightButton = UIButton(type: .infoLight)
-        //        myAddButton = UIButton(type: .contactAdd)
-        //        myDetailButton = UIButton(type: .detailDisclosure)
-        //        mySystemButton = UIButton(type: .system)
-        //        myCustomButton = UIButton(type: .custom)
-        //        myRectButton = UIButton(type: .roundedRect)
-        //        myInfoDarkButton.layer.position = CGPoint(x: posX, y: 50)
-        //        myInfoLightButton.layer.position = CGPoint(x: posX, y: 100)
-        //        myAddButton.layer.position = CGPoint(x: posX, y: 150)
-        //        myDetailButton.layer.position = CGPoint(x: posX, y: 200)
-        //        myCustomButton.layer.position = CGPoint(x: posX, y: 250)
-        //        myRectButton.layer.position = CGPoint(x: posX, y: 300)
+        let posX: CGFloat = self.view.bounds.width/2 - bWidth/2
+        myInfoDarkButton = UIButton(type: .infoDark)
+        myInfoLightButton = UIButton(type: .infoLight)
+        myAddButton = UIButton(type: .contactAdd)
+        myDetailButton = UIButton(type: .detailDisclosure)
+        mySystemButton = UIButton(type: .system)
+        myCustomButton = UIButton(type: .custom)
+        myRectButton = UIButton(type: .roundedRect)
+        myInfoDarkButton.layer.position = CGPoint(x: posX, y: 50)
+        myInfoLightButton.layer.position = CGPoint(x: posX, y: 100)
+        myAddButton.layer.position = CGPoint(x: posX, y: 150)
+        myDetailButton.layer.position = CGPoint(x: posX, y: 200)
+        myCustomButton.layer.position = CGPoint(x: posX, y: 250)
+        myRectButton.layer.position = CGPoint(x: posX, y: 300)
     }
     
     func addButtons(){
