@@ -19,6 +19,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     private var myRectButton: UIButton!
     private var myButton: UIButton!
     private var myTextField: UITextField!
+    private var label : UILabel!
     var count=0
     
     // ボタンのサイズを定義.
@@ -38,7 +39,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let posY: CGFloat = self.view.bounds.height/2 - bHeight/2
         
         // Labelを作成.
-        let label: UILabel = UILabel(frame: CGRect(x: posX, y: posY, width: bWidth, height: bHeight))
+        label = UILabel(frame: CGRect(x: posX, y: posY-100, width: bWidth, height: bHeight))
+        label.text = "整数を入力してね"
         myTextField = UITextField(frame: CGRect(x: posX, y: posY, width: tWidth, height: tHeight))
     
         // Buttonを生成する.
@@ -47,7 +49,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // ボタンの設置座標とサイズを設定する.
 //        myButton.frame = CGRect(x: posX, y: posY, width: bWidth, height: bHeight)
         
-        
+        changeTextField()
         
         // Viewに追加する
         self.view.addSubview(myTextField)
@@ -94,7 +96,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func changeTextField(){
-        myTextField.text = "Hello TextField"
+        myTextField.text = ""
         myTextField.delegate = self
         myTextField.borderStyle = .roundedRect
         myTextField.clearButtonMode = .whileEditing
@@ -158,18 +160,45 @@ class ViewController: UIViewController, UITextFieldDelegate {
      */
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print("textFieldShouldReturn: \(textField.text!)")
-        
-        // 改行ボタンが押されたらKeyboardを閉じる処理.
         textField.resignFirstResponder()
         
+        
+        guard let num:Int = toInt(textField.text!) else{
+            label.text="整数を入力してね"
+            return true
+        }
+        if isPrime(x: num){
+            label.text="素数だぁぁあ"
+        }
+        else{
+            label.text="素数じゃねぇxえx"
+        }
         return true
+        
+        
+        
+        
     }
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         print("textFieldShouldClear: \(textField.text!)")
         return true
     }
     
+    func isPrime(x:Int) -> Bool{
+        if x<2{
+            return false
+        }
+        for i in 2..<Int(sqrt(Double(x))) {
+            if(x%i==0){
+                return false
+            }
+        }
+        return true
+    }
     
+    func toInt(_ string:String) -> Int? {
+        return Int(string)
+    }
     
 }
 
