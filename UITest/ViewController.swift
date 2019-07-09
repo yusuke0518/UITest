@@ -188,7 +188,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if x<2{
             return false
         }
-        for i in 2..<Int(sqrt(Double(x))) {
+        for i in 2..<Int(sqrt(Double(x)))+1 {
             if(x%i==0){
                 return false
             }
